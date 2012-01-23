@@ -8,17 +8,39 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Just another web project ;)</title>
+
+ <script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDj5NRHn6nfzfYopzd9xnoW5As1yZu6cYA&sensor=true">
+    </script>
+    <script type="text/javascript">
+      function initialize() 
+      {
+        var myOptions = 
+        {
+          center: new google.maps.LatLng(40.769069,-73.988335),
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+            myOptions);
+        var marker = new google.maps.Marker();
+      }
+    </script>
+
 </head>
-<body>
+<body onload="initialize()">
 <div id="main">
 <tags:header />
 
 Hello World! This is a change!
 <% java.util.Date d = new java.util.Date(); %>
 
-<div id="map"></div>
-<div id="location-input"></div>
-<div id="type-dropdown"></div>
+<div id="map">
+
+<div id="map_canvas" style="width:100%; height:100%"></div><!-- map_canvas -->
+</div><!-- map -->
+<div id="location-input"></div><!-- location-input -->
+<div id="type-dropdown"></div><!-- type-dropdown -->
 
 todays date is <%= d.toString() %>
 
