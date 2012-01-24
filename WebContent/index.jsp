@@ -23,7 +23,13 @@
         };
         var map = new google.maps.Map(document.getElementById("map_canvas"),
             myOptions);
-        var marker = new google.maps.Marker();
+        var latLng = new google.maps.LatLng(40.769069,-73.988335);
+        var marker = new google.maps.Marker(
+        		{
+        			map: map, 
+        			position: google.maps.LatLng(40.769069,-73.988335),
+        			title:"Hello World!"
+        		});
       }
     </script>
 
