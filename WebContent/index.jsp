@@ -32,7 +32,7 @@
 <div id="main">
 <tags:header />
 
-Hello World! This is a change!
+Hello World! This is a change! 2
 <% java.util.Date d = new java.util.Date(); %>
 
 <div id="map">
