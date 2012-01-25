@@ -23,7 +23,13 @@
         };
         var map = new google.maps.Map(document.getElementById("map_canvas"),
             myOptions);
-        var marker = new google.maps.Marker();
+        
+        var marker = new google.maps.Marker(
+        		{
+        			map: map, 
+        			position: new google.maps.LatLng(40.769069,-73.988335),
+        			title:"Hello World!"
+        		});
       }
     </script>
 
@@ -32,7 +38,7 @@
 <div id="main">
 <tags:header />
 
-Hello World! This is a change! 3
+Hello World! This is a change!
 <% java.util.Date d = new java.util.Date(); %>
 
 <div id="map">
