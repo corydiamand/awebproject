@@ -1,7 +1,9 @@
-<%@page import="java.util.Date"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@  taglib tagdir="/WEB-INF/tags" prefix="tags" %>
+<%@ page import="java.util.Date"%>
+<%@ page import="java.sql.*"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="tags" %>
+
+
 <link rel="stylesheet" type="text/css" href="style.css" media="screen">
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -23,11 +25,11 @@
         };
         var map = new google.maps.Map(document.getElementById("map_canvas"),
             myOptions);
-        var latLng = new google.maps.LatLng(40.769069,-73.988335);
+        
         var marker = new google.maps.Marker(
         		{
         			map: map, 
-        			position: google.maps.LatLng(40.769069,-73.988335),
+        			position: new google.maps.LatLng(40.769069,-73.988335),
         			title:"Hello World!"
         		});
       }
@@ -37,6 +39,7 @@
 <body onload="initialize()">
 <div id="main">
 <tags:header />
+
 
 Hello World! This is a change!
 <% java.util.Date d = new java.util.Date(); %>
