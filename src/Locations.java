@@ -1,5 +1,3 @@
-
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -7,66 +5,70 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import javax.servlet.annotation.*;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class Locations
- */
 @WebServlet("/Locations")
-public class Locations extends HttpServlet {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -5684466977090319069L;
+public class Locations extends HttpServlet 
+{
 
-	@SuppressWarnings("null")
-	public void doGet(HttpServletRequest inRequest,
-		      HttpServletResponse outResponse) throws ServletException,
-		      IOException {
+  public void doGet(HttpServletRequest inRequest, HttpServletResponse outResponse) throws ServletException, IOException 
+  {
 
-		    PrintWriter out = null;
-		    Connection connection = null;
-		    Statement statement;
-		    ResultSet rs;
+    PrintWriter out = outResponse.getWriter();
+    Connection connection = null;
+    Statement statement;
+    ResultSet rs;
 
-		    try {
-		      Class.forName("com.mysql.jdbc.Driver");
+    try 
+    {
+      Class.forName("com.mysql.jdbc.Driver");
 
-		      connection = DriverManager
-		          .getConnection("jdbc:mysql://localhost/products");
-		      statement = connection.createStatement();
+      connection = DriverManager.getConnection("jdbc:mysql://localhost/awebproject","root","");
+      
+      statement = connection.createStatement();
 
-		      outResponse.setContentType("test/html");
-		      out = outResponse.getWriter();
+      outResponse.setContentType("test/html");
+      
+      out = outResponse.getWriter();
 
-		      rs = statement.executeQuery("SELECT ID, title, price FROM product");
+      rs = statement.executeQuery("SELECT * FROM locationdata");
 
-		      out.println("<HTML><HEAD><TITLE>Products</TITLE></HEAD>");
-		      out.println("<BODY>");
-		      out.println("<UL>");
+     
 
-		      while (rs.next()) {
-		        out.println("<LI>" + rs.getString("ID") + " "
-		            + rs.getString("title") + " " + rs.getString("price"));
-		      }
+      while (rs.next()) 
+      {
+    	  out.println("var marker" + rs.getString("id") + " = new google.maps.Marker(	{" + 
+        			"\nmap: map, " +
+        			"\nposition: new google.maps.LatLng(" + rs.getFloat("lat")+"," + rs.getFloat("lon") + "), " +
+        			"\ntitle: 'Hello World!'" +
+        			"\n});"
 
-		      out.println("</UL>");
-		      out.println("</BODY></HTML>");
-		    } catch (ClassNotFoundException e) {
-		      out.println("Driver Error");
-		    } catch (SQLException e) {
-		      out.println("SQLException: " + e.getMessage());
-		    }
-		  }
+    			  	 );
+      }
 
-		  public void doPost(HttpServletRequest inRequest,
-		      HttpServletResponse outResponse) throws ServletException,
-		      IOException {
-		    doGet(inRequest, outResponse);
-		  }
-		}
+    } 
+    
+    catch (ClassNotFoundException e) 
+    {
+    	out.println("Driver Error");
+    } 
+    catch (SQLException e) 
+    {
+    	out.println("SQLException: " + e.getMessage());
+    }
+     String locationdata = "7";
+    
+  //  inRequest.setAttribute("locationdata", locationdata);
+ //   inRequest.getRequestDispatcher("/WEB-INF/index.jsp").forward(inRequest,outResponse);
+    
+  }
+
+  public void doPost(HttpServletRequest inRequest, HttpServletResponse outResponse) throws ServletException, IOException 
+      {
+	  		doGet(inRequest, outResponse);
+      }
+}

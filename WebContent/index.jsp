@@ -5,7 +5,8 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="tags"%>
 
 
-<link rel="stylesheet" type="text/css" href="style.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="style.css"
+		media="screen">
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,6 +34,13 @@
         			position: new google.maps.LatLng(40.769069,-73.988335),
         			title:"Hello World!"
         		});
+        var marker2 = new google.maps.Marker(
+        		{
+        			map: map, 
+        			position: new google.maps.LatLng(40.769099,-73.988399),
+        			title:"Hello World!"
+        		});
+        
       }
     </script>
 
@@ -44,6 +52,8 @@
 
 		Hello World! This is a change!
 		<% java.util.Date d = new java.util.Date(); %>
+		<p>The data from servlet: ${Locations.locationdata}</p>
+		
 
 		<div id="map">
 
