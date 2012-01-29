@@ -1,3 +1,4 @@
+package aWebProject;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -14,10 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/Locations")
 public class Locations extends HttpServlet 
 {
+	
 
   public void doGet(HttpServletRequest inRequest, HttpServletResponse outResponse) throws ServletException, IOException 
   {
 
+	 
+	  
     PrintWriter out = outResponse.getWriter();
     Connection connection = null;
     Statement statement;
@@ -46,8 +50,7 @@ public class Locations extends HttpServlet
         			"\nposition: new google.maps.LatLng(" + rs.getFloat("lat")+"," + rs.getFloat("lon") + "), " +
         			"\ntitle: 'Hello World!'" +
         			"\n});"
-
-    			  	 );
+		  	 );
       }
 
     } 
@@ -60,10 +63,7 @@ public class Locations extends HttpServlet
     {
     	out.println("SQLException: " + e.getMessage());
     }
-     String locationdata = "7";
-    
-  //  inRequest.setAttribute("locationdata", locationdata);
- //   inRequest.getRequestDispatcher("/WEB-INF/index.jsp").forward(inRequest,outResponse);
+     
     
   }
 

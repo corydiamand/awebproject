@@ -3,10 +3,23 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
 
-	<link rel="stylesheet" type="text/css" href="style.css"
-		media="screen">
+
+<jsp:useBean id="beans" class="aWebProject.Beans" scope="request">
+
+</jsp:useBean>
+
+<jsp:useBean id="markers" class="aWebProject.MarkerServlet" scope="request">
+<jsp:setProperty name="markers" property="*" />
+</jsp:useBean>
+
+<jsp:useBean id="locations" class="aWebProject.Locations" scope="request">
+
+</jsp:useBean>
+
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen">
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -41,7 +54,9 @@
         			title:"Hello World!"
         		});
         
+       
       }
+      
     </script>
 
 </head>
@@ -49,12 +64,17 @@
 	<div id="main">
 		<tags:header />
 
-
+          	${markers}
+        	${markers.id}
+        	${markers.lat}
+       		${markers.lon}
+      
 		Hello World! This is a change!
-		<% java.util.Date d = new java.util.Date(); %>
-		<p>The data from servlet: ${Locations.locationdata}</p>
 		
-
+		<p>${beans.bean}<p>
+		
+		
+		
 		<div id="map">
 
 			<div id="map_canvas" style="width: 100%; height: 100%"></div>
@@ -66,8 +86,7 @@
 		<div id="type-dropdown"></div>
 		<!-- type-dropdown -->
 
-		todays date is
-		<%= d.toString() %>
+		
 
 		<tags:footer />
 	</div>

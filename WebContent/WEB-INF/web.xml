@@ -9,13 +9,12 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
- <servlet>
-<servlet-name>Locations</servlet-name>
-<servlet-class>Locations</servlet-class>
-</servlet>
-<servlet-mapping>
-<servlet-name>Locations</servlet-name>
-<url-pattern>/Locations</url-pattern>
-</servlet-mapping>
+  <servlet>
+    <servlet-name>MarkerServlet</servlet-name>
+    <servlet-class>aWebProject.MarkerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MarkerServlet</servlet-name>
+    <url-pattern>/MarkerServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
